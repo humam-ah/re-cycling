@@ -90,6 +90,11 @@ class RouteController extends Controller
         return view('home', compact('alternatives', 'distance'));
     }
 
+    public function show()
+    {
+        $routes = RouteAlternative::all();
+        return view('routes.show', compact('routes'));
+    }
 
     public function create()
     {
@@ -119,5 +124,44 @@ class RouteController extends Controller
         ]);
 
         return redirect()->route('home')->with('success', 'Alternatif rute berhasil ditambahkan!');
+    }
+
+    public function edit($id)
+    {
+        $route = RouteAlternative::findOrFail($id);
+        return view('routes.edit', compact('route'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $route = RouteAlternative::findOrFail($id);
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'distance' => 'required|numeric',
+            'road_condition' => 'required|numeric',
+            'accident_rate' => 'required|numeric',
+            'bike_lane_availability' => 'required|numeric',
+            'intersection_count' => 'required|numeric',
+        ]);
+
+        $route->update([
+            'name' => $request->input('name'),
+            'distance' => $request->input('distance'),
+            'road_condition' => $request->input('road_condition'),
+            'accident_rate' => $request->input('accident_rate'),
+            'bike_lane_availability' => $request->input('bike_lane_availability'),
+            'intersection_count' => $request->input('intersection_count'),
+        ]);
+
+        return redirect()->route('routes.show')->with('success', 'Rute berhasil diperbarui');
+    }
+
+    public function destroy($id)
+    {
+        $route = RouteAlternative::findOrFail($id);
+        $route->delete();
+
+        return redirect()->route('routes.show')->with('success', 'Rute berhasil dihapus');
     }
 }

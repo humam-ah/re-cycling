@@ -15,6 +15,9 @@
                     <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
                         {{ __('Home') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('routes.show')" :active="request()->routeIs('routes.show')">
+                        {{ __('Daftar Rute') }}
+                    </x-nav-link>
                     <x-nav-link :href="route('routes.create')" :active="request()->routeIs('routes.create')">
                         {{ __('Tambah Alternatif Rute') }}
                     </x-nav-link>

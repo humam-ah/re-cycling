@@ -25,8 +25,14 @@ use App\Http\Controllers\RouteController;
 
 Route::get('/', [RouteController::class, 'index'])->middleware(['auth', 'verified'])->name('home');
 Route::post('/calculate', [RouteController::class, 'calculate'])->name('routes.calculate');
+Route::get('/routes', [RouteController::class, 'show'])->name('routes.show');
 Route::get('/routes/create', [RouteController::class, 'create'])->name('routes.create');
 Route::post('/routes/store', [RouteController::class, 'store'])->name('routes.store');
+Route::get('/routes/{id}/edit', [RouteController::class, 'edit'])->name('routes.edit');
+Route::post('/routes/{id}/update', [RouteController::class, 'update'])->name('routes.update');
+Route::delete('/routes/{id}', [RouteController::class, 'destroy'])->name('routes.destroy');
+
+
 
 
 Route::get('/dashboard', function () {
