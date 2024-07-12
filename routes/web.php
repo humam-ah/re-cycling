@@ -31,6 +31,8 @@ Route::post('/routes/store', [RouteController::class, 'store'])->name('routes.st
 Route::get('/routes/{id}/edit', [RouteController::class, 'edit'])->name('routes.edit');
 Route::post('/routes/{id}/update', [RouteController::class, 'update'])->name('routes.update');
 Route::delete('/routes/{id}', [RouteController::class, 'destroy'])->name('routes.destroy');
+Route::get('/routes/calculate-details', [RouteController::class, 'calculateDetails'])->name('routes.calculateDetails');
+
 
 
 

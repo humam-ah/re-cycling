@@ -54,6 +54,7 @@
                     @endforeach
                 </tbody>
             </table>
+            <a href="{{ route('routes.calculateDetails', ['distance' => $distance]) }}" style="display: inline-block; background: #50b3a2; color: #fff; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Lihat Detail Perhitungan</a>
         </div>
     @endif
                 </div>
